@@ -21,3 +21,5 @@ First, the reference speed and the joystick is both at zero. At the first time u
 * note1
 * second note
 * and an other note
+
+Merge conflict B
