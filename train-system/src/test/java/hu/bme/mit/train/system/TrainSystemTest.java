@@ -26,6 +26,13 @@ public class TrainSystemTest {
 	}
 	
 	@Test
+	public void ThisIsATestStub() {
+		Assert.assertEquals(5,sensor.getSpeedLimit());
+		sensor.overrideSpeedLimit(-1);
+		Assert.assertEquals(5,sensor.getSpeedLimit());
+    }
+	
+	@Test
 	public void OverridingJoystickPosition_IncreasesReferenceSpeed() {
 		sensor.overrideSpeedLimit(10);
 
