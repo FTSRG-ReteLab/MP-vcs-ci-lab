@@ -1,6 +1,10 @@
 package hu.bme.mit.train.controller;
 
 import hu.bme.mit.train.interfaces.TrainController;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
 import com.google.common.collect.ImmutableTable;
 
 
@@ -31,6 +35,16 @@ public class TrainControllerImpl implements TrainController {
                 referenceSpeed += step;
 		}
 		enforceSpeedLimit();
+	}
+	
+	public void startController() {
+		Timer t = new Timer();
+		t.schedule(new TimerTask() {
+			  @Override
+			  public void run() {
+			    followSpeed();
+			  }
+			}, 100, 100);
 	}
 
 	@Override
