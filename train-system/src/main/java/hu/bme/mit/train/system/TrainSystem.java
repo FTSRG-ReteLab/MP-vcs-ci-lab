@@ -1,5 +1,9 @@
 package hu.bme.mit.train.system;
 
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import hu.bme.mit.train.controller.TrainControllerImpl;
 import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainSensor;
@@ -23,6 +27,17 @@ public class TrainSystem {
 
 	public TrainUser getUser() {
 		return user;
+	}
+
+	public void startOperation() {
+		Random r = new Random();
+		Timer timer = new Timer();
+		timer.scheduleAtFixedRate(new TimerTask() {
+			@Override
+			public void run() {
+				user.overrideJoystickPosition(r.nextInt());
+			}
+		},1000,1000);
 	}
 
 }
