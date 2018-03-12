@@ -35,7 +35,7 @@ public class TrainSystem {
 		timer.scheduleAtFixedRate(new TimerTask() {
 			@Override
 			public void run() {
-				user.overrideJoystickPosition(r.nextInt());
+				user.overrideJoystickPosition((r.nextInt()*10)-5);
 			}
 		},1000,1000);
 	}
