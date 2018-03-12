@@ -7,10 +7,12 @@ import hu.bme.mit.train.interfaces.TrainUser;
 public class TrainSensorImpl implements TrainSensor {
 
 	private TrainController controller;
+	private TrainUser user;
 	private int speedLimit = 5;
 
-	public TrainSensorImpl(TrainController controller) {
+	public TrainSensorImpl(TrainController controller, TrainUser user) {
 		this.controller = controller;
+		this.user = user;
 	}
 
 	@Override
@@ -20,7 +22,11 @@ public class TrainSensorImpl implements TrainSensor {
 
 	@Override
 	public void overrideSpeedLimit(int speedLimit) {
-		if(speedLimit>=0) {		
+		if(speedLimit <0 || speedLimit>500 || (this.speedLimit/2)>speedLimit){
+			user.setAlarmState(true);
+		}
+		else {
+			user.setAlarmState(false);
 			this.speedLimit = speedLimit;
 			controller.setSpeedLimit(speedLimit);
 		}
